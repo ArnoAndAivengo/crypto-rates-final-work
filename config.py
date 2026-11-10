@@ -1,4 +1,4 @@
-#Константы приложения: список монет и параметры API.
+"""Константы приложения: список монет и параметры API."""
 CRYPTOS: dict[str, str] = {
     "bitcoin": "Bitcoin (BTC)",
     "ethereum": "Ethereum (ETH)",

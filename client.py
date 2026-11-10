@@ -1,4 +1,4 @@
-# Клиент API CoinGecko: загрузка и разбор JSON с курсами.
+"""Клиент API CoinGecko: загрузка и разбор JSON с курсами."""
 from __future__ import annotations
 import json
 import urllib.parse
@@ -6,7 +6,7 @@ import urllib.request
 from config import API_URL, CRYPTOS, REQUEST_TIMEOUT_SEC
 
 class CryptoRatesClient:
-    # Клиент API: загрузка и разбор JSON с курсами.
+    """Клиент API: загрузка и разбор JSON с курсами."""
     def __init__(
         self,
         crypto_ids: dict[str, str] | None = None,
@@ -18,7 +18,7 @@ class CryptoRatesClient:
         self.timeout = timeout
 
     def _build_url(self) -> str:
-        # Собирает URL запроса с нужными параметрами.
+        """Собирает URL запроса с нужными параметрами."""
         params = urllib.parse.urlencode(
             {
                 "ids": ",".join(self.crypto_ids.keys()),
@@ -29,7 +29,7 @@ class CryptoRatesClient:
         return f"{self.api_url}?{params}"
 
     def fetch_rates(self) -> dict[str, float]:
-        # Запрашивает курсы у CoinGecko и возвращает словарь id → цена USD.
+        """Запрашивает курсы у CoinGecko и возвращает словарь id → цена USD."""
         request = urllib.request.Request(
             self._build_url(),
             headers={"Accept": "application/json"},
